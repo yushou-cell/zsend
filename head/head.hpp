@@ -13,3 +13,4 @@
 #include "CUtil.hpp"
 #include "SQLController.hpp"
 #include "Zmq.hpp"
+#include "brpcClient.hpp"

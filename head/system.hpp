@@ -7,6 +7,10 @@
  * Description:Third-party dependency header files
  */
 #pragma once
+#include <butil/logging.h>
+#include <butil/time.h>
+#include <SQL.pb.h>
+#include <brpc/channel.h>
 #include <glog/logging.h>
 #include <libunwind.h>
 #include <unordered_map>

@@ -10,8 +10,8 @@
 
 namespace ZeroMQ
 {
-    tbb::task_group Send::_tg;
-    ZmqEncapsulation Send::_zmqEnc;
+    // tbb::task_group Send::_tg;
+    // ZmqEncapsulation Send::_zmqEnc;
 
     ZmqEncapsulation::ZmqEncapsulation()
     {

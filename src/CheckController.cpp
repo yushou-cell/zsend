@@ -27,8 +27,27 @@ drogon::Task<void> CheckController::handleTest(const drogon::HttpRequestPtr req,
 {
     Json::Value value;
     std::string res;
-    co_await Test(res);
-    value["result"] = res;
+    Json::Reader reader;
+
+    std::string reqBody(req->getBody());
+    reader.parse(reqBody, value);
+    std::string SQL = value["SQL"].asString();
+    auto value2 = value["tableName"];
+    auto value3 = value["fieldName"];
+
+    std::vector<std::string> tableNameArr, fieldNameArr;
+    for (auto &ele : value2)
+    {
+        tableNameArr.push_back(ele.asString());
+    }
+
+    for (auto &ele : value3)
+    {
+        fieldNameArr.push_back(ele.asString());
+    }
+
+    auto responBody = co_await BrpcExtension::Send(SQL, tableNameArr, fieldNameArr);
+    value["result"] = responBody;
     auto resp = drogon::HttpResponse::newHttpJsonResponse(value);
     callback(resp);
     co_return;

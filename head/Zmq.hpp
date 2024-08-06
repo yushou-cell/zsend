@@ -55,8 +55,8 @@ namespace ZeroMQ
         std::string result;
 
     public:
-        static tbb::task_group _tg;
-        static ZmqEncapsulation _zmqEnc;
+        // static tbb::task_group _tg;
+        // static ZmqEncapsulation _zmqEnc;
 
     public:
         inline Send(std::string msg)
@@ -87,9 +87,9 @@ namespace ZeroMQ
             // std::cout << "await_suspend" << std::endl;
             std::string str(std::move(_msg));
 
-            _tg.run([h, str]()
-                    {Send::_zmqEnc.push(std::move(str)); 
-                    h.resume(); });
+            // _tg.run([h, str]()
+            //         {Send::_zmqEnc.push(std::move(str));
+            //         h.resume(); });
         }
         /**
          * @description: The return value when suspension ends.
