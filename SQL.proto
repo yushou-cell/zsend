@@ -1,0 +1,18 @@
+syntax = "proto3";
+package SQL;
+option cc_generic_services = true;
+message SelectRequest {
+    string sql = 1;
+    repeated string tableName = 2;
+    repeated string fieldName = 3;
+}
+
+message SelectResponse {
+    string result = 1;
+    string errInfo = 2;
+}
+
+
+service SQLHandle {
+    rpc SelectHandle (SelectRequest) returns (SelectResponse);
+}
